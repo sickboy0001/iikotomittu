@@ -26,7 +26,7 @@ export default function RootLayout({
 
           <footer className="py-5">
             <div className="text-center text-sm">
-              Copyright © All rights reserved | FullStackChannel
+              Copyright © All rights reserved | Sickboy
             </div>
           </footer>
         </div>
