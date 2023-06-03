@@ -1,4 +1,4 @@
-import Password from "@/app/components/password";
+import Password from "@/app/components/Organisms/Settings/password";
 
 // パスワード再設定ページ
 const ResetPasswordConfirmPage = () => {

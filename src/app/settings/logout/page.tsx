@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { redirect } from "next/navigation";
-import Logout from "@/app/components/logout";
 import type { Database } from "@/lib/database.types";
+import Logout from "@/app/components/Organisms/Settings/logout";
 
 // ログアウトページ
 const LogoutPage = async () => {

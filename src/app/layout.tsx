@@ -1,4 +1,4 @@
-import SupabaseListener from "./components/SupabaseListener";
+import SupabaseListener from "./components/Organisms/Common/SupabaseListener";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
