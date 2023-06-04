@@ -6,7 +6,7 @@ import Navigation from "./navigation";
 import type { Database } from "@/lib/database.types";
 
 // 認証状態の監視
-const SupabaseListener = async () => {
+const SupabaseListener: any = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
 
   // セッションの取得
