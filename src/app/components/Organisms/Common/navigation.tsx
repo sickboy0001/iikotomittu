@@ -6,12 +6,24 @@ import Image from "next/image";
 import { useEffect } from "react";
 import type { Session } from "@supabase/auth-helpers-nextjs";
 import type { Database } from "@/lib/database.types";
+import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+// user-circle UserCircleIcon
+// document-duplicate DocumentDuplicateIcon
 type ProfileType = Database["public"]["Tables"]["profiles"]["Row"];
 
 type Props = {
   session: Session | null;
   profile: ProfileType | null;
 };
+
+const Menu = [
+  {
+    name: "iikoto-Mittu",
+    icon: DocumentDuplicateIcon,
+    href: "/iikotomittu/top",
+  },
+];
+
 // ナビゲーション
 const Navigation = ({ session, profile }: Props) => {
   const { setUser } = useStore();
@@ -30,13 +42,25 @@ const Navigation = ({ session, profile }: Props) => {
   return (
     <header className="shadow-lg shadow-gray-100">
       <div className="py-2 container max-w-screen-xl  mx-auto flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl cursor-pointer">
-          iikoto-mittu
-        </Link>
+        <div className="flex">
+          <Link href="/" className="font-bold text-xl cursor-pointer">
+            iikoto-mittu
+          </Link>
+
+          {Menu.map((item, index) => (
+            <Link href={item.href} key={index}>
+              <div className=" text-sky-300 hover:text-sky-500 px-3 py-1 rounded-full text-sm">
+                <item.icon className="inline-block w-5 h-5 mr-1" />
+                {item.name}
+              </div>
+            </Link>
+          ))}
+        </div>
 
         <div className="text-sm font-bold">
           {session ? (
             <div className="flex items-center space-x-5">
+              <div>{profile && profile.name ? profile.name : ""}</div>
               <Link href="/settings/profile">
                 <div className="relative w-10 h-10">
                   <Image
