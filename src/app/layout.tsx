@@ -20,7 +20,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen">
           <SupabaseListener />
 
-          <main className="flex-1 container max-w-screen-sm mx-auto px-1 py-5">
+          <main className="flex-1 container max-w-screen-2xl mx-auto px-1 py-5">
             {children}
           </main>
 

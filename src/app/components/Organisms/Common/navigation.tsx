@@ -8,14 +8,12 @@ import type { Session } from "@supabase/auth-helpers-nextjs";
 import type { Database } from "@/lib/database.types";
 type ProfileType = Database["public"]["Tables"]["profiles"]["Row"];
 
-// ナビゲーション
-const Navigation = ({
-  session,
-  profile,
-}: {
+type Props = {
   session: Session | null;
   profile: ProfileType | null;
-}) => {
+};
+// ナビゲーション
+const Navigation = ({ session, profile }: Props) => {
   const { setUser } = useStore();
 
   // 状態管理にユーザー情報を保存
@@ -31,7 +29,7 @@ const Navigation = ({
 
   return (
     <header className="shadow-lg shadow-gray-100">
-      <div className="py-5 container max-w-screen-sm mx-auto flex items-center justify-between">
+      <div className="py-2 container max-w-screen-xl  mx-auto flex items-center justify-between">
         <Link href="/" className="font-bold text-xl cursor-pointer">
           iikoto-mittu
         </Link>
