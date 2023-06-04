@@ -8,6 +8,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Loading from "@/app/loading";
 import * as z from "zod";
 import type { Database } from "@/lib/database.types";
+import ButtonPrimary from "@/app/components/Atoms/Button/ButtonPrimary";
+import LabelInputTitle from "@/app/components/Atoms/Lable/LabelInputTitle";
+
 type Schema = z.infer<typeof schema>;
 
 // 入力データの検証ルールを定義
@@ -68,7 +71,7 @@ const ResetPassword = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* メールアドレス */}
         <div className="mb-5">
-          <div className="text-sm mb-1 font-bold">メールアドレス</div>
+          <LabelInputTitle>メールアドレス</LabelInputTitle>
           <input
             type="email"
             className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
@@ -83,16 +86,7 @@ const ResetPassword = () => {
 
         {/* 送信ボタン */}
         <div className="mb-5">
-          {loading ? (
-            <Loading />
-          ) : (
-            <button
-              type="submit"
-              className="font-bold bg-sky-500 hover:brightness-95 w-full rounded-full p-2 text-white text-sm"
-            >
-              送信
-            </button>
-          )}
+          {loading ? <Loading /> : <ButtonPrimary>送信</ButtonPrimary>}
         </div>
       </form>
 

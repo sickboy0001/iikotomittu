@@ -5,6 +5,8 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/loading";
 import type { Database } from "@/lib/database.types";
+import ButtonDanger from "@/app/components/Atoms/Button/ButtonDanger";
+import LabelInputTitle from "@/app/components/Atoms/Lable/LabelInputTitle";
 
 // ログアウト
 const Logout = () => {
@@ -41,18 +43,19 @@ const Logout = () => {
   return (
     <div>
       <div className="text-center mb-5">ログアウトしますか？</div>
+
       {/* ログアウトボタン */}
       <form onSubmit={onSubmit}>
         <div className="mb-5">
           {loading ? (
             <Loading />
           ) : (
-            <button
-              type="submit"
-              className="font-bold bg-red-500 hover:brightness-95 w-full rounded-full p-2 text-white text-sm"
-            >
-              ログアウト
-            </button>
+            //   <button
+            //     type="submit"
+            //     className="font-bold bg-red-500 hover:brightness-95 w-full rounded-full p-2 text-white text-sm"
+            //   >
+            // </button>
+            <ButtonDanger>ログアウト</ButtonDanger>
           )}
         </div>
       </form>

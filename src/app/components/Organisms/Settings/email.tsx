@@ -8,6 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Loading from "@/app/loading";
 import * as z from "zod";
 import type { Database } from "@/lib/database.types";
+import ButtonPrimary from "@/app/components/Atoms/Button/ButtonPrimary";
+import LabelInputTitle from "@/app/components/Atoms/Lable/LabelInputTitle";
 type Schema = z.infer<typeof schema>;
 
 // 入力データの検証ルールを定義
@@ -83,13 +85,13 @@ const Email = ({ email }: { email: string }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* 現在のメールアドレス */}
         <div className="mb-5">
-          <div className="text-sm mb-1 font-bold">現在のメールアドレス</div>
+          <LabelInputTitle>現在のメールアドレス</LabelInputTitle>
           <div>{email}</div>
         </div>
 
         {/* 新しいメールアドレス */}
         <div className="mb-5">
-          <div className="text-sm mb-1 font-bold">新しいメールアドレス</div>
+          <LabelInputTitle>新しいメールアドレス</LabelInputTitle>
           <input
             type="email"
             className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
@@ -104,16 +106,7 @@ const Email = ({ email }: { email: string }) => {
 
         {/* 変更ボタン */}
         <div className="mb-5">
-          {loading ? (
-            <Loading />
-          ) : (
-            <button
-              type="submit"
-              className="font-bold bg-sky-500 hover:brightness-95 w-full rounded-full p-2 text-white text-sm"
-            >
-              変更
-            </button>
-          )}
+          {loading ? <Loading /> : <ButtonPrimary>変更</ButtonPrimary>}
         </div>
       </form>
 

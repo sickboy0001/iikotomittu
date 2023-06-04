@@ -41,7 +41,7 @@ const Navigation = ({ session, profile }: Props) => {
 
   return (
     <header className="shadow-lg shadow-gray-100">
-      <div className="py-2 container max-w-screen-xl  mx-auto flex items-center justify-between">
+      <div className="py-2 px-2 container flex items-center justify-between">
         <div className="flex">
           <Link href="/" className="font-bold text-xl cursor-pointer">
             iikoto-mittu

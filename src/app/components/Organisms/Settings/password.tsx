@@ -8,6 +8,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Loading from "@/app/loading";
 import * as z from "zod";
 import type { Database } from "@/lib/database.types";
+import ButtonPrimary from "@/app/components/Atoms/Button/ButtonPrimary";
+import LabelInputTitle from "@/app/components/Atoms/Lable/LabelInputTitle";
+
 type Schema = z.infer<typeof schema>;
 
 // 入力データの検証ルールを定義
@@ -78,7 +81,7 @@ const Password = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* 新しいパスワード */}
         <div className="mb-5">
-          <div className="text-sm mb-1 font-bold">新しいパスワード</div>
+          <LabelInputTitle>新しいパスワード</LabelInputTitle>
           <input
             type="password"
             className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
@@ -93,7 +96,8 @@ const Password = () => {
 
         {/* 確認用パスワード */}
         <div className="mb-5">
-          <div className="text-sm mb-1 font-bold">確認用パスワード</div>
+          <LabelInputTitle>確認用パスワード</LabelInputTitle>
+
           <input
             type="password"
             className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
@@ -108,16 +112,7 @@ const Password = () => {
 
         {/* 変更ボタン */}
         <div className="mb-5">
-          {loading ? (
-            <Loading />
-          ) : (
-            <button
-              type="submit"
-              className="font-bold bg-sky-500 hover:brightness-95 w-full rounded-full p-2 text-white text-sm"
-            >
-              変更
-            </button>
-          )}
+          {loading ? <Loading /> : <ButtonPrimary>変更</ButtonPrimary>}
         </div>
 
         {/* メッセージ */}

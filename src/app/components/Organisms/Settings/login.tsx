@@ -9,6 +9,7 @@ import Link from "next/link";
 import Loading from "@/app/loading";
 import * as z from "zod";
 import type { Database } from "@/lib/database.types";
+import ButtonPrimary from "@/app/components/Atoms/Button/ButtonPrimary";
 type Schema = z.infer<typeof schema>;
 
 // 入力データの検証ルールを定義
@@ -66,6 +67,7 @@ const Login = () => {
   return (
     <div className="max-w-[400px] mx-auto">
       <div className="text-center font-bold text-xl mb-10">ログイン</div>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* メールアドレス */}
         <div className="mb-3">
@@ -97,16 +99,7 @@ const Login = () => {
 
         {/* ログインボタン */}
         <div className="mb-5">
-          {loading ? (
-            <Loading />
-          ) : (
-            <button
-              type="submit"
-              className="font-bold bg-sky-500 hover:brightness-95 w-full rounded-full p-2 text-white text-sm"
-            >
-              ログイン
-            </button>
-          )}
+          {loading ? <Loading /> : <ButtonPrimary>ログイン</ButtonPrimary>}
         </div>
       </form>
 

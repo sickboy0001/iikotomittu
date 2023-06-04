@@ -9,6 +9,9 @@ import Link from "next/link";
 import Loading from "@/app/loading";
 import * as z from "zod";
 import type { Database } from "@/lib/database.types";
+import ButtonPrimary from "@/app/components/Atoms/Button/ButtonPrimary";
+import LabelInputTitle from "@/app/components/Atoms/Lable/LabelInputTitle";
+
 type Schema = z.infer<typeof schema>;
 
 // 入力データの検証ルールを定義
@@ -131,16 +134,7 @@ const Signup = () => {
 
         {/* サインアップボタン */}
         <div className="mb-5">
-          {loading ? (
-            <Loading />
-          ) : (
-            <button
-              type="submit"
-              className="font-bold bg-sky-500 hover:brightness-95 w-full rounded-full p-2 text-white text-sm"
-            >
-              サインアップ
-            </button>
-          )}
+          {loading ? <Loading /> : <ButtonPrimary>サインアップ</ButtonPrimary>}
         </div>
       </form>
 

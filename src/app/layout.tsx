@@ -17,12 +17,12 @@ export default function RootLayout({
   return (
     <html>
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
+        <div className=""></div>
+
+        <div className="flex flex-col min-h-screen max-w-screen-2xl mx-auto">
           <SupabaseListener />
 
-          <main className="flex-1 container max-w-screen-2xl mx-auto px-1 py-5">
-            {children}
-          </main>
+          <main className="flex-1 container  px-1 py-5">{children}</main>
 
           <footer className="py-5">
             <div className="text-center text-sm">
