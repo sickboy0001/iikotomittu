@@ -5,8 +5,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "SupaBase auth",
-  description: "SupaBase auth",
+  title: "iikoto-mittu",
+  description: "iikoto-mittu",
 };
 
 export default function RootLayout({
