@@ -1,7 +1,16 @@
-import React, { Dispatch, useCallback, useState } from "react";
+"use client";
+
+import React, {
+  Dispatch,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { CalendarDay } from "./CalendarDay";
 import { GetYmdString } from "@/lib/datetime";
 import SubTitle from "@/app/components/Atoms/Button/Button";
+import { useMediaQuery } from "react-responsive";
 
 const moment = require("moment");
 
@@ -14,6 +23,12 @@ type Props = {
 function TGTCalendarWeek(props: any) {
   const [baseDate, setBaseDate] = useState(GetYmdString(new Date()));
   const [baseCols, setBaseCols] = useState(2);
+  const isDesktop: boolean = useMediaQuery({ query: "(min-width: 768px)" });
+  const ref = useRef(null);
+
+  useEffect(() => {
+    setBaseCols(isDesktop ? baseCols : -1);
+  });
 
   const endnumber = 1;
   const startnumber = endnumber - (baseCols + 3) * 3;
@@ -23,6 +38,16 @@ function TGTCalendarWeek(props: any) {
     .add(startnumber, "d")
     .toDate();
   const endTime = moment(baseDate, "yyyy MM DD").add(endnumber, "d").toDate();
+
+  // useEffect(() => {
+  //   // ボタンをクリックしたときに、scrollIntoView メソッドを呼び出す
+  //   if (ref.current !== null) {
+  //     const el = document.getElementById("myElement");
+  //     if (el !== null) {
+  //       el.scrollIntoView();
+  //     }
+  //   }
+  // }, [ref]);
 
   const handleBaseColsBig = useCallback(
     (e: any) => {
@@ -105,11 +130,15 @@ function TGTCalendarWeek(props: any) {
   return (
     <>
       {/* //ダミー */}
-      <div className="grid grid-cols-3 gap-4"></div>
-      <div className="grid grid-cols-4 gap-4"></div>
-      <div className="grid grid-cols-5 gap-4"></div>
-      <div className="grid grid-cols-6 gap-4"></div>
-      <div className="grid grid-cols-7 gap-4"></div>
+      <div className="grid grid-cols-2"></div>
+      <div className="grid grid-cols-3"></div>
+      <div className="grid grid-cols-4"></div>
+      <div className="grid grid-cols-5"></div>
+      <div className="grid grid-cols-6"></div>
+      <div className="grid grid-cols-7"></div>
+      {/* <div ref={ref}>
+        <button onClick={() => {}}>一番下へスクロール</button>
+      </div> */}
       {/* <SubTitle Title={"Calendar"} Description={""}></SubTitle> */}
       <div className="flex items-center justify-between py-2 px-6">
         <div className="leading-none rounded-lg transition ease-in-out inline-flex  p-1 items-center text-2xl">
@@ -187,7 +216,9 @@ function TGTCalendarWeek(props: any) {
           </button>
         </div>
       </div>
+      {/* <div className={`grid grid-cols-${baseCols + 3}  gap-2`}> */}
       <div className={`grid grid-cols-${(baseCols + 3).toString()} gap-4`}>
+        {/* <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-2">  */}
         {thisdates.map((date) => {
           const thisdatestring = moment(date).format("YYYY-MM-DD");
           const event = thisdatestring in events ? events[thisdatestring] : [];
