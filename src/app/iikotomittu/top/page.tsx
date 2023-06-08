@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllGoodThings } from "@/app/bizlogic/goodthings";
 import TGTCalendarWeek from "@/app/components/Organisms/iikotomittu/CalendarWeek";
-import SubTitle from "@/app/components/Atoms/Lable/SubTitle";
+import SubTitle from "@/app/components/Atoms/Lable/Title";
 import useStore from "@/store";
 
 const guest_user_id = process.env.NEXT_PUBLIC_GUEST_USER_ID as

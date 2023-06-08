@@ -11,7 +11,7 @@ type Props = {
   date: Date;
   setGoodThings: Dispatch<any>;
 };
-export function TGTNewThing(props: Props) {
+export function NewThing(props: Props) {
   const { userId, date, setGoodThings } = props;
   const [isNewThing, setIsNewThing] = useState(Boolean);
   const [value, setValue] = useState("");

@@ -16,11 +16,11 @@ const subNavigation = [
     icon: UserCircleIcon,
     href: "/settings/profile",
   },
-  {
-    name: "メールアドレス",
-    icon: EnvelopeIcon,
-    href: "/settings/email",
-  },
+  // {
+  //   name: "メールアドレス",
+  //   icon: EnvelopeIcon,
+  //   href: "/settings/email",
+  // },
   {
     name: "パスワード",
     icon: KeyIcon,

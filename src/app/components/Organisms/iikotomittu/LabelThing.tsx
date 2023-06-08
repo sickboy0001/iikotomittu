@@ -14,7 +14,7 @@ type Props = {
   setGoodThings: Dispatch<any>;
 };
 
-function TGTLabelThing(props: Props) {
+function LabelThing(props: Props) {
   const { userId, id, children, setGoodThings } = props;
   const [isWriteThing, setIsWriteThing] = useState<boolean>(false);
   const [value, setValue] = useState<any>(children);
@@ -115,4 +115,4 @@ function TGTLabelThing(props: Props) {
   );
 }
 
-export default TGTLabelThing;
+export default LabelThing;

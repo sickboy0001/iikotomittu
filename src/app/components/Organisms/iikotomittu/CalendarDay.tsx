@@ -1,9 +1,9 @@
 import React, { Dispatch } from "react";
 import { getAllGoodThings, archivedGoodThing } from "@/app/bizlogic/goodthings";
-import { TGTNewThing } from "./NewThing";
 import TGTLabelThing from "./LabelThing";
 import LabelDate from "@/app/components/Atoms/Lable/LabelDate";
 import { ButtonToThing } from "@/app/components/Atoms/Button/ButtonToThing";
+import { NewThing } from "./NewThing";
 const moment = require("moment");
 
 type Props = {
@@ -70,11 +70,11 @@ export function CalendarDay(props: Props) {
               );
             })}
           </div>
-          <TGTNewThing
+          <NewThing
             userId={userId}
             date={date}
             setGoodThings={setGoodThings}
-          ></TGTNewThing>
+          ></NewThing>
         </div>
       </div>
     </div>

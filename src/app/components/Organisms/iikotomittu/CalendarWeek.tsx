@@ -9,7 +9,6 @@ import React, {
 } from "react";
 import { CalendarDay } from "./CalendarDay";
 import { GetYmdString } from "@/lib/datetime";
-import SubTitle from "@/app/components/Atoms/Button/Button";
 import { useMediaQuery } from "react-responsive";
 
 const moment = require("moment");
@@ -67,34 +66,25 @@ function TGTCalendarWeek(props: any) {
     [baseCols]
   );
 
-  const handleDayReset = useCallback(
-    (e: any) => {
-      setBaseDate(() => {
-        return GetYmdString(new Date());
-      });
-    },
-    [baseDate]
-  );
-  const handleDayPrev = useCallback(
-    (e: any) => {
-      setBaseDate((prevBaseDate) => {
-        return moment(prevBaseDate, "YYYY-MM-DD")
-          .add(baseCols + 3, "d")
-          .format("YYYY-MM-DD");
-      });
-    },
-    [baseDate]
-  );
-  const handleDayBack = useCallback(
-    (e: any) => {
-      setBaseDate((prevBaseDate) => {
-        return moment(prevBaseDate, "YYYY-MM-DD")
-          .add(-(baseCols + 3), "d")
-          .format("YYYY-MM-DD");
-      });
-    },
-    [baseDate]
-  );
+  const handleDayReset = useCallback((e: any) => {
+    setBaseDate(() => {
+      return GetYmdString(new Date());
+    });
+  }, []);
+  const handleDayPrev = useCallback((e: any) => {
+    setBaseDate((prevBaseDate) => {
+      return moment(prevBaseDate, "YYYY-MM-DD")
+        .add(baseCols + 3, "d")
+        .format("YYYY-MM-DD");
+    });
+  }, []);
+  const handleDayBack = useCallback((e: any) => {
+    setBaseDate((prevBaseDate) => {
+      return moment(prevBaseDate, "YYYY-MM-DD")
+        .add(-(baseCols + 3), "d")
+        .format("YYYY-MM-DD");
+    });
+  }, []);
 
   var thisdate = startTime;
   var thisdates = Array.from(
@@ -128,7 +118,7 @@ function TGTCalendarWeek(props: any) {
   }
 
   return (
-    <>
+    <div>
       {/* //ダミー */}
       <div className="grid grid-cols-2"></div>
       <div className="grid grid-cols-3"></div>
@@ -238,8 +228,7 @@ function TGTCalendarWeek(props: any) {
           );
         })}
       </div>
-      <div></div>
-    </>
+    </div>
   );
 }
 
