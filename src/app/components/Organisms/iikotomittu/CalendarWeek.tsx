@@ -20,6 +20,7 @@ type Props = {
 };
 
 function TGTCalendarWeek(props: any) {
+  const { userId, posts, setGoodThings } = props;
   const [baseDate, setBaseDate] = useState(GetYmdString(new Date()));
   const [baseCols, setBaseCols] = useState(2);
   const isDesktop: boolean = useMediaQuery({ query: "(min-width: 768px)" });
@@ -31,22 +32,11 @@ function TGTCalendarWeek(props: any) {
 
   const endnumber = 1;
   const startnumber = endnumber - (baseCols + 3) * 3;
-  const { userId, posts, setGoodThings } = props;
 
   const startTime = moment(baseDate, "yyyy MM DD")
     .add(startnumber, "d")
     .toDate();
   const endTime = moment(baseDate, "yyyy MM DD").add(endnumber, "d").toDate();
-
-  // useEffect(() => {
-  //   // ボタンをクリックしたときに、scrollIntoView メソッドを呼び出す
-  //   if (ref.current !== null) {
-  //     const el = document.getElementById("myElement");
-  //     if (el !== null) {
-  //       el.scrollIntoView();
-  //     }
-  //   }
-  // }, [ref]);
 
   const handleBaseColsBig = useCallback(
     (e: any) => {

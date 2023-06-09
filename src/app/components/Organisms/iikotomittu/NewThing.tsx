@@ -2,6 +2,7 @@ import React, { Dispatch, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import Button from "@/app/components/Atoms/Button/Button";
 import { addGoodThing, getAllGoodThings } from "@/app/bizlogic/goodthings";
+import TextAreaDirectInput from "@/app/components/Atoms/Input/TextAreaDirectInput";
 const moment = require("moment");
 
 // import { addGoodThing, getAllGoodThings } from "@/bizlogic/goodthings";
@@ -17,18 +18,6 @@ export function NewThing(props: Props) {
   const [value, setValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const textAreaClass = classNames(
-    "block",
-    "p-2.5",
-    "w-full",
-    "text-sm",
-    "text-gray-900",
-    "bg-gray-50",
-    "border",
-    "border-gray-300",
-    "focus:ring-blue-500",
-    "focus:border-blue-500"
-  );
   useEffect(() => {
     if (isNewThing && textareaRef.current !== null) {
       // console.log("setfocus");
@@ -77,33 +66,23 @@ export function NewThing(props: Props) {
   // };
 
   return (
-    <div className="w-full text-black bg-teal-100 hover:bg-teal-200 font-extrabold rounded-2xl">
+    <div>
       {!isNewThing ? (
-        <Button
-          handleClick={() => handleNewClick()}
-          handleMouseDown={() => handleMouseDown()}
-        >
-          New
-        </Button>
-      ) : (
-        <div>
-          <textarea
-            id="textarea_message"
-            rows={parseInt("3")}
-            className={textAreaClass}
-            placeholder="Today GoodThing Write....Entry when lost focus"
-            onChange={(event) => setValue(event.target.value)}
-            onBlur={() => handleBlur()}
-            value={value}
-            ref={textareaRef}
-          ></textarea>
+        <div className="w-full text-black bg-teal-100 hover:bg-teal-200 font-extrabold rounded-2xl">
           <Button
-            // handleClick={() => handleRegistClick()}
-            handleMouseDown={() => handleRegistMouseDown()}
+            handleClick={() => handleNewClick()}
+            handleMouseDown={() => handleMouseDown()}
           >
-            Regist
+            New
           </Button>
         </div>
+      ) : (
+        <TextAreaDirectInput
+          setValue={setValue}
+          handleBlur={handleBlur}
+          value={value}
+          textareaRef={textareaRef}
+        ></TextAreaDirectInput>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { Dispatch } from "react";
 import { getAllGoodThings, archivedGoodThing } from "@/app/bizlogic/goodthings";
-import TGTLabelThing from "./LabelThing";
+import LabelNowThing from "./LabelNowThing";
 import LabelDate from "@/app/components/Atoms/Lable/LabelDate";
 import { ButtonToThing } from "@/app/components/Atoms/Button/ButtonToThing";
 import { NewThing } from "./NewThing";
@@ -27,19 +27,6 @@ export function CalendarDay(props: Props) {
     }
   };
 
-  // const handleAddClick = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   if (addTextThing === "") return;
-  //   if (userId === "") return;
-  //   console.log(
-  //     `handleAddClick ${addTextThing} userId:${userId} targetDate:${targetDate}`
-  //   );
-  //   const result = await addGoodThing(userId, targetDate, addTextThing);
-  //   let goodthings = await getAllGoodThings(userId);
-  //   setGoodThings(goodthings);
-  //   setAddTextThing("");
-  // };
-
   return (
     <div key={moment(date).format("YYYYMMDD")}>
       <div>
@@ -56,13 +43,13 @@ export function CalendarDay(props: Props) {
                     x
                   </ButtonToThing>
                   <div>
-                    <TGTLabelThing
+                    <LabelNowThing
                       userId={userId}
                       id={post.id}
                       setGoodThings={setGoodThings}
                     >
                       {post.contents}
-                    </TGTLabelThing>
+                    </LabelNowThing>
                   </div>
                 </span>
 

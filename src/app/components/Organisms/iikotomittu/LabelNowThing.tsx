@@ -4,6 +4,9 @@ import {
   getAllGoodThings,
   updateThingGoodThing,
 } from "@/app/bizlogic/goodthings";
+import TextAreaDirectInput from "@/app/components/Atoms/Input/TextAreaDirectInput";
+import LabelThing from "../../Atoms/Lable/LabelThing";
+// import LabelThing from "../../Atoms/temp/__tempLabelThing";
 // import { getAllGoodThings } from "@/bizlogic/goodthings";
 // import { updateThingGoodThing } from "@/bizlogic/goodthings";
 
@@ -14,50 +17,27 @@ type Props = {
   setGoodThings: Dispatch<any>;
 };
 
-function LabelThing(props: Props) {
+function LabelNowThing(props: Props) {
   const { userId, id, children, setGoodThings } = props;
   const [isWriteThing, setIsWriteThing] = useState<boolean>(false);
   const [value, setValue] = useState<any>(children);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const labelClass = classNames(
-    "border",
-    "border-gray-400",
-    "rounded-lg",
-    "shadow-md",
-    "p-1",
-    "m-0.5",
-    "bg-white",
-    "text-gray-600",
-    "dark:text-gray-400",
-    "text-left",
-    "text-base"
-  );
-  const inputButtonClass = classNames(
-    "text-black",
-    "font-bold",
-    "bg-teal-100",
-    "hover:bg-teal-200",
-    "border",
-    "py-1",
-    "px-2",
-    "rounded-2xl",
-    "w-full",
-    "rounded-lg"
-  );
-  const textAreaClass = classNames(
-    "block",
-    "p-2.5",
-    "w-full",
-    "text-sm",
-    "text-gray-900",
-    "bg-gray-50",
-    "rounded-lg",
-    "border",
-    "border-gray-300",
-    "focus:ring-blue-500",
-    "focus:border-blue-500"
-  );
+  // const labelClass = classNames(
+  //   "block",
+  //   "p-1",
+  //   "m-0.5",
+  //   "w-full",
+  //   "rounded-lg",
+  //   "text-base",
+  //   "border",
+  //   "bg-white",
+  //   "text-gray-900",
+  //   "border-gray-500",
+  //   "shadow-md",
+  //   "text-gray-600",
+  //   "dark:text-gray-400"
+  // );
 
   const handleEditStart = () => {
     setIsWriteThing(true);
@@ -94,25 +74,22 @@ function LabelThing(props: Props) {
   return (
     <>
       {!isWriteThing ? (
-        <div className={labelClass} onClick={() => handleEditStart()}>
-          {children}
-        </div>
+        // <div className={labelClass} onClick={() => handleEditStart()}>
+        //   {children}
+        // </div>
+        <LabelThing onClick={handleEditStart}>{children}</LabelThing>
       ) : (
         <div>
-          <textarea
-            id="textarea_message"
-            rows={parseInt("3")}
-            className={textAreaClass}
-            placeholder="Today GoodThing Write....Entry when lost focus"
-            onChange={(event) => setValue(event.target.value)}
-            onBlur={() => handleBlur()}
+          <TextAreaDirectInput
+            setValue={setValue}
+            handleBlur={handleBlur}
             value={value}
-            ref={textareaRef}
-          ></textarea>
+            textareaRef={textareaRef}
+          ></TextAreaDirectInput>
         </div>
       )}
     </>
   );
 }
 
-export default LabelThing;
+export default LabelNowThing;
