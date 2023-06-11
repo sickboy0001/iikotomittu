@@ -1,6 +1,7 @@
 import React, { Dispatch, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import Button from "@/app/components/Atoms/Button/Button";
+import TextAreaDirectInput from "../../Atoms/Input/TextAreaDirectInput";
 
 type Props = {
   id: number;
@@ -11,18 +12,6 @@ export function TGTRewriteThing(props: Props) {
   const [value, setValue] = useState<any>(children);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isRewriteThing, setIsRewriteThing] = useState(false);
-  const inputButtonClass = classNames(
-    "text-black",
-    "font-bold",
-    "bg-teal-100",
-    "hover:bg-teal-200",
-    "border",
-    "py-1",
-    "px-2",
-    "rounded-2xl",
-    "w-full",
-    "rounded-lg"
-  );
   const textAreaClass = classNames(
     "block",
     "p-2.5",
@@ -74,15 +63,10 @@ export function TGTRewriteThing(props: Props) {
     setIsRewriteThing(false);
   }
 
-  // const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  //   if (e.nativeEvent.isComposing || e.key !== "Enter") return;
-  //   if (e.key == "Enter" && e.shiftKey === true) handleRegistMouseDown();
-  // };
-
   return (
     <div>
       <div>
-        <textarea
+        {/* <textarea
           id="textarea_message"
           rows={parseInt("3")}
           className={textAreaClass}
@@ -91,7 +75,13 @@ export function TGTRewriteThing(props: Props) {
           onBlur={() => handleBlur()}
           value={value}
           ref={textareaRef}
-        ></textarea>
+        ></textarea> */}
+        <TextAreaDirectInput
+          setValue={setValue}
+          handleBlur={handleBlur}
+          value={value}
+          textareaRef={textareaRef}
+        ></TextAreaDirectInput>
         <Button
           // handleClick={() => handleRegistClick()}
           handleMouseDown={() => handleRegistMouseDown()}

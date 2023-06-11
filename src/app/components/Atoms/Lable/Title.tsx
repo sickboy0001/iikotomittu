@@ -7,7 +7,7 @@ type Props = {
   children?: React.JSX.Element | null | undefined;
 };
 
-function SubTitle(props: Props): React.JSX.Element {
+function Title(props: Props): React.JSX.Element {
   const { Title, Description, children } = props;
   const labelClass = classNames("text-3xl");
 
@@ -20,4 +20,4 @@ function SubTitle(props: Props): React.JSX.Element {
   );
 }
 
-export default SubTitle;
+export default Title;
